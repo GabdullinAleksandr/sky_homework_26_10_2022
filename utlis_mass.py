@@ -29,9 +29,10 @@ def removal_mass(us_input, lst, logic_size):
 def insert_mass(us_input_id, item_insert, lst, logic_size):
     if logic_size == us_input_id:
         return mass_entry(item_insert, lst, logic_size)
-    elif us_input_id > logic_size:
-        print('Неверный ввод')
-        quit()
+    elif lst[us_input_id] is None:
+        lst[us_input_id] = item_insert
+        logic_size = [i for i in range(len(lst)-1, -1, -1) if lst[i] is not None][0] + 1
+        return logic_size
     else:
         for i in range(logic_size, us_input_id - 1, - 1):
             if i == us_input_id:
